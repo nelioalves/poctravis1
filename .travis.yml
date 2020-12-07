@@ -14,4 +14,4 @@ deploy:
     docker tag dscatalog:latest $DOCKERHUB_USER/dscatalog:latest;
     docker push $DOCKERHUB_USER/dscatalog;
   on:
-    branch: master
+    branch: main
