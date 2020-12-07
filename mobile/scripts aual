@@ -1,0 +1,163 @@
+## Aula 04 - iniciando o projeto EXPO
+
+- visualizar package.json
+- porque estamos utilizando o expo mesmo?
+- inicializar projeto expo com typescript
+  `expo init -t expo-template-blank-typescript`
+
+- diferentes versões do expo-cli (use sempre a doc como referência)
+- falar do yarn vs npm
+- explicar o log do expo-cli após criar o projeto
+- cd ds-catalog
+- yarn ios (inicializa o metro bundler e inicializa o app dentro do expo)
+- o app pode rodar no seu celular, basta instalar o app do expo independente de ser android ou ios
+- diferença entre uma aplicação Expo e uma aplicação ReactNative
+- Hello DevSuperior (fastrefresh antigo hotreload)
+
+## Aula 05
+
+- diferenciar o JSX/TSX da sintaxe reactjs da web.
+- Componentes do ReactNative
+- Estilização no reactNative utilizando o StyleSheet
+
+/\*\*
+
+- Tags no React nao possuem valor semântico
+- Não possuem estilização própria
+- FlexBox é padrão no ReactNative, logo
+- todos os components possuem display: flex; por padrão.
+- Não há herança de estilos css dentro do RN
+- View: div, footer, header, aside, main, section
+- Text: p, span, strong, h1, h2, etc...
+- StyleSheet: Folha de estilos css
+  \*/
+
+* todo texto precisa estar dentro de uma tag texto
+* criar mais páginas
+
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function App() {
+return (
+<View style={styles.container}>
+<Text>Hello DEV!</Text>
+<StatusBar style="auto" />
+</View>
+);
+}
+
+const styles = StyleSheet.create({
+container: {
+flex: 1,
+backgroundColor: '#fff',
+alignItems: 'center',
+justifyContent: 'center',
+},
+});
+
+## Aula 06 - Configurando o React-navigation
+
+Documentação do React-Navigation
+
+> > instalando o react-navigation:
+> > yarn add @react-navigation/native
+
+> > instalando as dependencias do ReactNavigation no expo
+> > expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+> > Adicionar o gesture-handler no projeto
+> > import 'react-native-gesture-handler';
+
+Note: If you skip this step, your app may crash in production even if it works fine in development.
+
+> > código no App.tsx
+> > import "react-native-gesture-handler";
+> > import React from "react";
+> > import { NavigationContainer } from "@react-navigation/native";
+
+import Routes from "./src/routes";
+
+export default function App() {
+return (
+<NavigationContainer>
+<Routes />
+</NavigationContainer>
+);
+}
+
+> > adicionar o Navigation-Stack ao projeto
+> > yarn add @react-navigation/stack
+
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+const Stack = createStackNavigator();
+import { Home, Sobre } from "../pages";
+
+const Routes: React.FC = () => {
+return (
+<Stack.Navigator>
+<Stack.Screen
+name="Home"
+component={Home}
+options={{
+          title: "Titulo",
+          cardStyle: { backgroundColor: "#F2F2F2" },
+          headerStyle: {
+            backgroundColor: "#407BFF",
+          },
+        }}
+/>
+<Stack.Screen name="Sobre" component={Sobre} />
+</Stack.Navigator>
+);
+};
+
+export default Routes;
+
+> > Exemplo da App.tsx com React-navigation implementado
+
+import "react-native-gesture-handler";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+
+import Routes from "./src/routes";
+
+export default function App() {
+return (
+<NavigationContainer>
+<Routes />
+</NavigationContainer>
+);
+}
+
+> > botão pra navegar entre páginas:
+> > <TouchableOpacity onPress={() => props.navigation.navigate('NomeDaPagina')}>
+> > <Text>Nome da página</Text> > > </TouchableOpacity>
+
+## Aula 07 - componente do header
+ESSA AULA PRECISARÁ SER DIVIDIDA
+instalar fonte: OpenSans
+> > expo install expo-font @expo-google-fonts/open-sans
+
+estruturar o tema-base
+conteúdo da tela de inicial
+
+## Aula 08 - conteúdo da tela de navegação
+
+
+## Aula 11 - Buscando dados da API.
+>> instalar Axios `yarn add axios`
+>> Criar arquivo de configuração
+>> integração com jwt
+>> listando dados da api
+
+## Aula 12 - Listando detalhes do produto
+>> requisição na api pra listar o produto pelo id dele
+>> adição de uma nova página
+>> 
+
+## Aula 13 - Hora da header de navegação
+
+
