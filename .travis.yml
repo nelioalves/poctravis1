@@ -4,3 +4,14 @@ jdk:
 before_install:
   - cd backend
   - chmod +x mvnw
+script:
+  - docker build -t dscatalog:latest .
+before_deploy:
+  echo "$DOCKERHUB_PASSWORD" | docker login --username "$DOCKERHUB_USER" --password-stdin
+deploy:
+  provider: script
+  script:
+    docker tag dscatalog:latest $DOCKER_USERNAME/dscatalog:latest;
+    docker push $DOCKER_USERNAME/dscatalog;
+  on:
+    branch: master
